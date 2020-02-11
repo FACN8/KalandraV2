@@ -3,7 +3,7 @@ const hbs = require('express-handlebars');
 const path = require('path');
 
 const routes = require('./routes.js');
-const helpers = require('./views/helpers/index.js');
+const helpers = require('./views/helpers/helpers.js');
 
 const app = express();
 

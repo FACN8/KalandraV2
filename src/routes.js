@@ -1,9 +1,28 @@
 const express = require('express');
+const getData = require('./../db/queries/getdata')
 
 const router = express.Router();
 
+router.get('/events', (req, res) => {
+    getData.getEvents((err, events) => {
+        if (err) throw err;
+        res.render('partials/events', {
+            title: 'Browse Events',
+            events
+        })
+    })
+
+
+
+})
+
 router.get('/', (req, res) => {
-    res.render('home', { });
+    res.render('home', {
+
+    });
+});
+router.get('/stylesheets/', (req, res) => {
+    res.render('home', {});
 });
 
 router.get('/history', (req, res) => {
@@ -18,7 +37,7 @@ router.get('/event', (req, res) => {
 
 router.get('/create-post', (req, res) => {
     //add post to DB
-    res.render('home', { });
+    res.render('home', {});
 });
 
 router.get('/search', (req, res) => {
