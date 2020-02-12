@@ -4,14 +4,24 @@ const dbConnection = require('../db_connection.js');
    the database.
    @param cb a callback function
    returns: an array of objects representing events */
-const search = (term, cb) => {
+module.exports.search = (term, cb) => {
     const query = 'SELECT * FROM events WHERE Upper(title) LIKE $1 OR Upper(descr) LIKE $2;';
+
     dbConnection.query(query, ['%' + term.toUpperCase() + '%', '%' + term.toUpperCase() + '%'], (err, result) => {
         if (err) return cb(err);
         cb(null, result.rows);
     });
 };
 
+module.exports.getEvent = (id, cb) => {
+    const query = 'SELECT * FROM events WHERE id=$1;';
+    dbConnection.query(query, [id], (err, result) => {
+        if (err) return cb(err);
+        cb(null, result.rows);
+    });
+};
+
+module.exports.getEvents = (cb) =>
 const getEvents = (cb) =>
     dbConnection.query('SELECT * FROM events;',
         (err, result) => {
@@ -19,7 +29,7 @@ const getEvents = (cb) =>
             cb(null, result.rows);
         });
 
-const getComments = (eventId, cb) =>
+module.exports.getComments = (eventId, cb) =>
     dbConnection.query(
         'SELECT users.username,comments.comtext ' +
         'FROM users join comments on comments.user_id = users.id ' +
@@ -29,7 +39,7 @@ const getComments = (eventId, cb) =>
             cb(null, result.rows);
         });
 
-const getReviews = (eventId, cb) =>
+module.exports.getReviews = (eventId, cb) =>
     dbConnection.query(
         'SELECT users.username,reviews.revtext ' +
         'FROM users join reviews on reviews.user_id = users.id ' +
@@ -39,7 +49,7 @@ const getReviews = (eventId, cb) =>
             cb(null, result.rows);
         });
 
-const getAttends = (eventId, cb) =>
+module.exports.getAttends = (eventId, cb) =>
     dbConnection.query(
         'SELECT users.username, users.pic FROM attend join users on attend.user_id ' +
         '= users.id where attend.event_id = $1;', [eventId],
@@ -47,11 +57,3 @@ const getAttends = (eventId, cb) =>
             if (err) return cb(err);
             cb(null, result.rows);
         });
-
-module.exports = {
-    search,
-    getEvents,
-    getComments,
-    getReviews,
-    getAttends
-};

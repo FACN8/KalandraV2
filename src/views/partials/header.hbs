@@ -1,52 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kalandra</title>
-    {{> style}}
+    <link rel="stylesheet" href="../../stylesheets/style.css">
+
 <header>
-        <div class="nav-container">
-            <nav>
-                <ul class="navlist">
+    <div class="nav-container">
+        <nav>
+            <ul class="navlist">
+                <a href="/">
                     <li id="home" class="homenav navitem">
                         HOME
                     </li>
+                </a>
+                <a href="/history">
                     <li id="history" class="historynav navitem">
                         HISTORY
                     </li>
+                </a>
+                <a>
                     <li id="post" class="postnav navitem">
                         POST
                     </li>
-                </ul>
-            </nav>
-        </div>
-        <div>
-            <h1 class="headerlogo">
-                Kalandra
-            </h1>
-        </div>
-    </header>
-    <div class="main">
-        <form class="search-container" id="searchform">
-            <input type="text" name="Search Event" autocomplete="off" placeholder="Search for events" />
-            <input type="submit" name="Search" value="Search" />
-        </form>
-        <div class="main-events">
-            <div id="clmn1" class="events-container"></div>
-            <div id="clmn2" class="events-container"></div>
-        </div>
-
+                </a>
+            </ul>
+        </nav>
     </div>
-    </head>
- {{!-- <div id="create-event-container">
-        <form id="create-event-form" class="create-event-container">
-            <input type="text" name="Image URL" autocomplete="off" placeholder="Image URL" />
-            <input type="text" name="Event title" autocomplete="off" placeholder="Event title" />
-            <input type="date" name="Event date" autocomplete="off" placeholder="Event date" />
-            <input type="text" name="Event description" autocomplete="off" placeholder="Event description" />
-            <input type="submit" name="Create event" value="Create event" />
-        </form>
-    </div> --}}
+    <div>
+        <h1 class="headerlogo">
+            Kalandra
+        </h1>
+    </div>
+</header>
+<div id="create-event-container">
+    <form id="create-event-form" class="create-event-container">
+        <input type="text" name="Image URL" autocomplete="off" placeholder="Image URL" />
+        <input type="text" name="Event title" autocomplete="off" placeholder="Event title" />
+        <input type="date" name="Event date" autocomplete="off" placeholder="Event date" />
+        <input type="text" name="Event description" autocomplete="off" placeholder="Event description" />
+        <input type="submit" name="Create event" value="Create event" />
+    </form>
+</div>
+<form class="search-container" id="searchform">
+    <input type="text" name="Search Event" autocomplete="off" placeholder="Search for events" />
+    <input type="submit" name="Search" value="Search" />
+</form>

@@ -1,10 +1,11 @@
 const express = require('express');
-const getData = require('./../db/queries/getdata')
+const getdata = require('../db/queries/getdata.js');
+const setdata = require('../db/queries/setdata.js');
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    getData.getEvents((err, events) => {
+    getdata.getEvents((err, events) => {
         if (err) throw err;
         res.render('events', {
             title: 'Browse Events',
@@ -13,8 +14,15 @@ router.get('/', (req, res) => {
     })
 });
 
+router.get('/event/:eventid', (req, res) => {
+    const event = getdata.getEvent(req.params.eventid, (err, result) => {
+        if (err) return res.send('Error occurred');
+        res.render('event', result[0]);
+    });
+});
+
 router.get('/search/:term', (req, res) => {
-    getData.search(req.params.term, (err, events) => {
+    getdata.search(req.params.term, (err, events) => {
         if (err) throw err;
         res.render('events', {
             title: 'Search Events',
@@ -24,7 +32,7 @@ router.get('/search/:term', (req, res) => {
 });
 
 router.get('/history', (req, res) => {
-    getData.getEvents((err, events) => {
+    getdata.getEvents((err, events) => {
         if (err) throw err;
         res.render('events', {
             title: 'Browse past events',
@@ -34,7 +42,7 @@ router.get('/history', (req, res) => {
 });
 
 router.get('/attends/:eventid', (req, res) => {
-    getData.getAttends(req.params.eventid, (err, attends) => {
+    getdata.getAttends(req.params.eventid, (err, attends) => {
         if (err) throw err;
         res.render('partials/attends', {
             title: 'Browse Attends',
@@ -44,7 +52,7 @@ router.get('/attends/:eventid', (req, res) => {
 })
 
 router.get('/reviews/:eventid', (req, res) => {
-    getData.getReviews(req.params.eventid, (err, reviews) => {
+    getdata.getReviews(req.params.eventid, (err, reviews) => {
         if (err) throw err;
         res.render('partials/reviews', {
             title: 'Browse Reviews',
@@ -54,7 +62,7 @@ router.get('/reviews/:eventid', (req, res) => {
 })
 
 router.get('/comments/:eventid', (req, res) => {
-    getData.getComments(req.params.eventid, (err, comments) => {
+    getdata.getComments(req.params.eventid, (err, comments) => {
         if (err) throw err;
         res.render('partials/comments', {
             title: 'Browse Comments',
@@ -62,4 +70,5 @@ router.get('/comments/:eventid', (req, res) => {
         })
     })
 })
+
 module.exports = router;

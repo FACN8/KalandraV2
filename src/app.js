@@ -1,11 +1,17 @@
 const express = require('express');
 const hbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 const path = require('path');
 
 const routes = require('./routes.js');
 const helpers = require('./views/helpers/helpers.js');
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use('/stylesheets', express.static(path.join(__dirname, 'stylesheets')));
+
+console.log(__dirname);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

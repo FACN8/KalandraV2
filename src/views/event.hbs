@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<body>
+    <center>
+        {{#if id}}
+        <div class="eventitem event-container">
+            <h1 class="eventitemspan">{{title}}</h1>
+            <img class="eventitemimg" src="{{pic}}" />
+            <h2>{{descr}}</h2>
+            {{> comments this}}
+            {{> attends this}}
+            {{> reviews this}}
+        </div>
+        {{/if}}
+    </center>
+</body>
+
+</html>
