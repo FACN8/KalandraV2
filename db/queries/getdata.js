@@ -21,9 +21,7 @@ const getEvents = (cb) =>
 
 const getComments = (eventId, cb) =>
     dbConnection.query(
-        'SELECT comments.event_id,users.username,comments.comtext ' +
-        'FROM users join comments on comments.user_id = users.id ' +
-        'where comments.event_id = $1;', [eventId],
+        'SELECT users.username,comments.comtext FROM users JOIN comments ON comments.user_id = users.id WHERE comments.event_id = $1;', [eventId],
         (err, result) => {
             if (err) return cb(err)
             cb(null, result.rows)
@@ -31,9 +29,7 @@ const getComments = (eventId, cb) =>
 
 const getReviews = (eventId, cb) =>
     dbConnection.query(
-        'SELECT reviews.event_id,users.username,reviews.revtext ' +
-        'FROM users join reviews on reviews.user_id = users.id ' +
-        'where reviews.event_id = $1;', [eventId],
+        'SELECT users.username,reviews.revtext FROM users JOIN reviews ON reviews.user_id = users.id WHERE reviews.event_id = $1;', [eventId],
         (err, result) => {
             if (err) return cb(err)
             cb(null, result.rows)
@@ -41,8 +37,8 @@ const getReviews = (eventId, cb) =>
 
 const getRegister = (eventId, cb) =>
     dbConnection.query(
-        'SELECT users.username FROM attend join users on attend.user_id ' +
-        '= users.id where attend.event_id = $1;', [eventId],
+        'SELECT users.username FROM attend JOIN users ON attend.user_id ' +
+        '= users.id WHEREattend.event_id = $1;', [eventId],
         (err, result) => {
             if (err) return cb(err)
             cb(null, result.rows)
