@@ -4,6 +4,8 @@ const setdata = require('../db/queries/setdata.js');
 
 const router = express.Router();
 
+let postflag = false;
+
 router.get('/', (req, res) => {
     res.render('home', {});
 });
@@ -19,9 +21,10 @@ router.get('/history', (req, res) => {
     res.render('history', {});
 });
 
-router.get('/create-post', (req, res) => {
+router.get('/post', (req, res) => {
     //add post to DB
-    res.render('home', {});
+    
+    post: postflag ? postflag = false : postflag = true
 });
 
 router.get('/search', (req, res) => {

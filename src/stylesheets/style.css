@@ -3,6 +3,11 @@
     font-family: Dosis, sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 body {
     margin: 0;
     background: rgb(246, 255, 246);
@@ -16,6 +21,12 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: rgb(204, 255, 207);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .create-event-container {
@@ -97,6 +108,15 @@ header {
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
+}
+
+.event-container {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(240, 251, 241);
 }
 
 .events-container {

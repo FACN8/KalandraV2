@@ -4,7 +4,7 @@ const dbConnection = require('../db_connection');
    the database.
    @param cb a callback function
    returns: an array of objects representing events */
-module.exports.search = (term, cb) => {
+const search = (term, cb) => {
     const query = 'SELECT * FROM events WHERE Upper(title) LIKE $1 OR Upper(descr) LIKE $2;';
 
     dbConnection.query(query, ['%' + term.toUpperCase() + '%', '%' + term.toUpperCase() + '%'], (err, result) => {
@@ -13,7 +13,7 @@ module.exports.search = (term, cb) => {
     });
 };
 
-module.exports.getEvent = (id, cb) => {
+const getEvent = (id, cb) => {
     const query = 'SELECT * FROM events WHERE id=$1;';
 
     dbConnection.query(query, [id], (err, result) => {
@@ -22,14 +22,14 @@ module.exports.getEvent = (id, cb) => {
     });
 };
 
-module.exports.getEvents = (cb) =>
+getEvents = (cb) =>
     dbConnection.query('SELECT * FROM events;',
         (err, result) => {
             if (err) return cb(err);
             cb(null, result.rows);
         });
 
-module.exports.getComments = (eventId, cb) =>
+const getComments = (eventId, cb) =>
     dbConnection.query(
         'SELECT comments.event_id,users.username,comments.comtext ' +
         'FROM users join comments on comments.user_id = users.id ' +
@@ -39,7 +39,7 @@ module.exports.getComments = (eventId, cb) =>
             cb(null, result.rows)
         });
 
-module.exports.getReviews = (eventId, cb) =>
+const getReviews = (eventId, cb) =>
     dbConnection.query(
         'SELECT reviews.event_id,users.username,reviews.revtext ' +
         'FROM users join reviews on reviews.user_id = users.id ' +
@@ -49,7 +49,7 @@ module.exports.getReviews = (eventId, cb) =>
             cb(null, result.rows)
         });
 
-module.exports.getRegister = (eventId, cb) =>
+const getRegister = (eventId, cb) =>
     dbConnection.query(
         'SELECT users.username FROM attend join users on attend.user_id ' +
         '= users.id where attend.event_id = $1;', [eventId],
@@ -57,3 +57,11 @@ module.exports.getRegister = (eventId, cb) =>
             if (err) return cb(err)
             cb(null, result.rows)
         });
+
+module.exports = {
+    search,
+    getEvent,
+    getEvents,
+    getRegister,
+    getReviews
+}
