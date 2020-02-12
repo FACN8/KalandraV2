@@ -28,7 +28,7 @@ tape('Testing browsing all data in intial database and adding an event and retri
         })
     })
 }) 
-})
+
 
 const initComments = [{ event_id: 4, username: 'lina', comtext: 'Mabrok habibte lal 120, lal farha el tame' }, { event_id: 4, username: 'ivan', comtext: 'Happy birthday fatmeeh, 3o2bal el 120 zay el 20 :p' }];
 

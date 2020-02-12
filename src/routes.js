@@ -21,7 +21,8 @@ router.get('/search/:term', (req, res) => {
             events
         })
     })
-})
+});
+
 router.get('/history', (req, res) => {
     getData.getEvents((err, events) => {
         if (err) throw err;
@@ -38,6 +39,16 @@ router.get('/attends/:eventid', (req, res) => {
         res.render('partials/attends', {
             title: 'Browse Attends',
             attends
+        });
+    })
+})
+
+router.get('/reviews/:eventid', (req, res) => {
+    getData.getReviews(req.params.eventid, (err, reviews) => {
+        if (err) throw err;
+        res.render('partials/reviews', {
+            title: 'Browse Reviews',
+            reviews
         })
     })
 })
@@ -46,20 +57,9 @@ router.get('/comments/:eventid', (req, res) => {
     getData.getComments(req.params.eventid, (err, comments) => {
         if (err) throw err;
         res.render('partials/comments', {
-            title: 'Browse comments',
+            title: 'Browse Comments',
             comments
         })
     })
 })
-
-router.get('/reviews/:eventid', (req, res) => {
-    getData.getReviews(req.params.eventid, (err, reviews) => {
-        if (err) throw err;
-        res.render('partials/reviews', {
-            title: 'Browse reviews',
-            reviews
-        })
-    })
-})
-
 module.exports = router;
