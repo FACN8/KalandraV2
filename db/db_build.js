@@ -7,9 +7,7 @@ const sql = fs.readFileSync(sqlPath).toString();
 
 const runDbBuild = (cb) => dbConnection.query(sql, cb);
 
-if (process.env.NODE_ENV) {
-    runDbBuild();
-    console.log('Database built');
-}
+runDbBuild();
+console.log('Database built');
 
 module.exports = runDbBuild

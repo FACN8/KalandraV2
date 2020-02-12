@@ -1,0 +1,13 @@
+{{#if events}}
+{{#each events}} <a style="text-decoration: none;" href="/event/{{id}}"><center>
+<div class="eventitem"> 
+<img src="{{pic}}" alt="" class="eventitemimg">
+<center><h1 class="eventitemspan">{{title}}</h1></center>
+<h3 class="eventitemspan">{{descr}}</h3>
+<h3 class="eventitemspan">{{date}}</h3>
+</div></center></a>
+
+{{/each}}
+{{else}}
+<center><h1 class="eventitemspan">No results found</h1></center>
+{{/if}}

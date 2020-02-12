@@ -1,0 +1,11 @@
+{{#if comments}}
+{{#each comments}} <center>
+<div class="eventitem"> 
+<center><h1 class="eventitemspan">{{username}}</h1></center>
+<h3 class="eventitemspan">{{comtext}}</h3>
+</div></center></a>
+
+{{/each}}
+{{else}}
+<center><h1 class="eventitemspan">No comments found</h1></center>
+{{/if}}
