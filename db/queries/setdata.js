@@ -7,7 +7,7 @@ const dbConnection = require('../db_connection.js');
    @param descr the description for the event
    @param cb a callback function
    returns an array of objects representing events */
-const setEvent = (pic, title, date, descr, cb) => {
+module.exports.setEvent = (pic, title, date, descr, cb) => {
     dbConnection.query(
         'INSERT INTO events (pic, title, date, descr) VALUES ($1, $2, $3, $4)', [pic, title, date, descr],
         (err, res) => {
@@ -18,7 +18,7 @@ const setEvent = (pic, title, date, descr, cb) => {
 }
 
 
-const setComment = (userId, eventId, comtext, cb) => {
+module.exports.setComment = (userId, eventId, comtext, cb) => {
     dbConnection.query(
         'INSERT INTO comments (user_Id, event_Id, comtext) VALUES ($1, $2, $3)', [userId, eventId, comtext],
         (err, res) => {
@@ -29,7 +29,7 @@ const setComment = (userId, eventId, comtext, cb) => {
 }
 
 
-const setReview = (userId, eventId, revtext, cb) => {
+module.exports.setReview = (userId, eventId, revtext, cb) => {
     dbConnection.query(
         'INSERT INTO reviews (user_Id, event_Id, revtext) VALUES ($1, $2, $3)', [userId, eventId, revtext],
         (err, res) => {
@@ -40,7 +40,7 @@ const setReview = (userId, eventId, revtext, cb) => {
 }
 
 
-const setRegister = (userId, eventId, cb) => {
+module.exports.setRegister = (userId, eventId, cb) => {
     dbConnection.query(
         'INSERT INTO attend (user_Id, event_Id) VALUES ($1, $2)', [userId, eventId],
         (err, res) => {
@@ -49,10 +49,3 @@ const setRegister = (userId, eventId, cb) => {
         }
     );
 }
-
-module.exports = {
-    setEvent,
-    setComment,
-    setReview,
-    setRegister
-};

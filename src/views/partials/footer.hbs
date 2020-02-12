@@ -5,6 +5,7 @@
 </center>
 <script>
     const postContainer = document.querySelector('.create-event-container');
+    const searchForm = document.querySelector('#searchform');
 
     document.querySelector('#post').addEventListener('click', () => {
         if (postContainer.style.display === 'none'
@@ -12,6 +13,12 @@
             postContainer.style.display = 'flex';
         else
             postContainer.style.display = 'none';
+    });
+
+    searchForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (searchForm.childNodes[1].value !== '')
+            window.location.href = "/search/" + searchForm.childNodes[1].value;
     });
 
     //EVENT LISTENER SEND QUERIES & DEAL WITH IN ROUTES</script>

@@ -22,7 +22,6 @@ module.exports.getEvent = (id, cb) => {
 };
 
 module.exports.getEvents = (cb) =>
-const getEvents = (cb) =>
     dbConnection.query('SELECT * FROM events;',
         (err, result) => {
             if (err) return cb(err);
