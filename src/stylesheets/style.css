@@ -185,6 +185,11 @@ footer {
     width: 100%;
 }
 
+.attenditemimg {
+    border-radius: 1rem 1rem 0 0;
+    width: 60%;
+}
+
 .eventitemspan {
     margin: 1.5rem;
 }
