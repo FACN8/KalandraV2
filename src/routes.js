@@ -68,4 +68,18 @@ router.get('/history', (req, res) => {
     })
 });
 
+router.get('/create-event', (req, res) => {
+    console.log(req.query.pic);
+    setdata.setEvent(req.query.pic, req.query.title, req.query.date, req.query.descr, (error, result) => {
+        if (error) throw error;
+        getdata.getEvents((err, events) => {
+            if (err) throw err;
+            res.render('events', {
+                title: 'Browse Events',
+                events
+            });
+        });
+    });
+});
+
 module.exports = router;

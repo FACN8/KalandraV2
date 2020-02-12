@@ -6,6 +6,7 @@
 <script>
     const postContainer = document.querySelector('.create-event-container');
     const searchForm = document.querySelector('#searchform');
+    const createEventForm = document.querySelector('#create-event-form');
 
     document.querySelector('#post').addEventListener('click', () => {
         if (postContainer.style.display === 'none'
@@ -19,6 +20,25 @@
         event.preventDefault();
         if (searchForm.childNodes[1].value !== '')
             window.location.href = "/search/" + searchForm.childNodes[1].value;
+    });
+
+    createEventForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        let values = [];
+
+        createEventForm.childNodes.forEach((element) => {
+            if (element.value)
+                values.push(element.value);
+        });
+
+        //Refactor this: (INDIVIDUAL INPUT ids)
+        if (createEventForm.childNodes[1].value === ''
+            || createEventForm.childNodes[2].value === ''
+            /*|| createEventForm.childNodes[3].value === ''*/
+            || createEventForm.childNodes[4].value === '')
+            return;
+        window.location.href = `/create-event?pic=${values[0]}&title=${values[1]}&date=${values[2]}&descr=${values[3]}`;
     });
 
     //EVENT LISTENER SEND QUERIES & DEAL WITH IN ROUTES</script>
