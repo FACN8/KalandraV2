@@ -2,14 +2,16 @@
 
 <body>
     <center>
-        {{#if id}}
+        {{#if res.id}}
         <div class="eventitem event-container">
-            <h1 class="eventitemspan">{{title}}</h1>
-            <img class="eventitemimg" src="{{pic}}" />
-            <h2>{{descr}}</h2>
-            {{> comments this}}
-            {{> attends this}}
-            {{> reviews this}}
+            <h1 class="eventitemspan">{{res.title}}</h1>
+            <img class="eventitemimg" src="{{res.pic}}" />
+            <h2>{{res.descr}}</h2>
+            <h2>{{res.date}}</h2>
+
+            {{> attends}}
+            {{> comments}}
+            {{> reviews}}
         </div>
         {{/if}}
     </center>

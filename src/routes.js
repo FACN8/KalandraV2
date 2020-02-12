@@ -17,7 +17,34 @@ router.get('/', (req, res) => {
 router.get('/event/:eventid', (req, res) => {
     const event = getdata.getEvent(req.params.eventid, (err, result) => {
         if (err) return res.send('Error occurred');
-        res.render('event', result[0]);
+
+        let reviews, attends, comments;
+
+        getdata.getComments(req.params.eventid, (err, commentsRes) => {
+            if (err) throw err;
+            comments = commentsRes;
+
+            getdata.getReviews(req.params.eventid, (err, reviewsRes) => {
+                if (err) throw err;
+                reviews = reviewsRes;
+
+
+                getdata.getAttends(req.params.eventid, (err, attendsRes) => {
+                    if (err) throw err;
+                    attends = attendsRes;
+
+                    res.render('event', {
+                        res: result[0],
+                        comments,
+                        reviews,
+                        attends
+                    });
+                });
+
+            });
+
+        });
+
     });
 });
 
@@ -40,35 +67,5 @@ router.get('/history', (req, res) => {
         })
     })
 });
-
-router.get('/attends/:eventid', (req, res) => {
-    getdata.getAttends(req.params.eventid, (err, attends) => {
-        if (err) throw err;
-        res.render('partials/attends', {
-            title: 'Browse Attends',
-            attends
-        });
-    })
-})
-
-router.get('/reviews/:eventid', (req, res) => {
-    getdata.getReviews(req.params.eventid, (err, reviews) => {
-        if (err) throw err;
-        res.render('partials/reviews', {
-            title: 'Browse Reviews',
-            reviews
-        })
-    })
-})
-
-router.get('/comments/:eventid', (req, res) => {
-    getdata.getComments(req.params.eventid, (err, comments) => {
-        if (err) throw err;
-        res.render('partials/comments', {
-            title: 'Browse Comments',
-            comments
-        })
-    })
-})
 
 module.exports = router;
