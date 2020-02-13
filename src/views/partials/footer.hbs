@@ -31,11 +31,11 @@
             if (element.value)
                 values.push(element.value);
         });
-
+        console.log(createEventForm.childNodes[3].value)
         //Refactor this: (INDIVIDUAL INPUT ids)
         if (createEventForm.childNodes[1].value === ''
             || createEventForm.childNodes[2].value === ''
-            /*|| createEventForm.childNodes[3].value === ''*/
+            || createEventForm.childNodes[3].value === ''
             || createEventForm.childNodes[4].value === '')
             return;
         window.location.href = `/create-event?pic=${values[0]}&title=${values[1]}&date=${values[2]}&descr=${values[3]}`;
