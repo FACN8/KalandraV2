@@ -69,7 +69,11 @@ router.get('/history', (req, res) => {
 });
 
 router.get('/create-event', (req, res) => {
-    console.log(req.query.pic);
+    console.log(3,req.query.pic);
+    console.log(3,req.query.title);
+    console.log(3,req.query.date);
+    console.log(3,req.query.descr);
+    console.log(req.body)
     setdata.setEvent(req.query.pic, req.query.title, req.query.date, req.query.descr, (error, result) => {
         if (error) throw error;
         getdata.getEvents((err, events) => {
