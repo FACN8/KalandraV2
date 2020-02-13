@@ -24,7 +24,8 @@ header {
 }
 
 footer {
-    position: fixed;
+    margin-top: 3vh;
+    /*position: fixed;*/
     bottom: 0;
     width: 100%;
 }
@@ -123,7 +124,7 @@ footer {
     margin: 0;
     display: flex;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     background-color: rgb(240, 251, 241);
     width: 48vw;
@@ -172,6 +173,22 @@ footer {
     background-color: rgb(227, 255, 229);
 }
 
+.attend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.attenditem {
+    border: ridge rgb(245, 245, 245) 2px;
+    border-radius: 1rem;
+    margin: 1rem;
+    max-width: 190px;
+    height: 170px;
+    background-color: rgb(227, 255, 229);
+}
+
 #clmn1 {
     justify-content: flex-end;
 }
@@ -187,11 +204,12 @@ footer {
 
 .attenditemimg {
     border-radius: 1rem 1rem 0 0;
-    width: 60%;
+    width: 100%;
+    height: 60%;
 }
 
 .eventitemspan {
-    margin: 1.5rem;
+    margin: 1rem;
 }
 
 @media only screen and (max-width: 600px) {

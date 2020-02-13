@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-
 <body>
     <center>
         {{#if res.id}}
         <div class="eventitem event-container">
-            <h1 class="eventitemspan">{{res.title}}</h1>
             <img class="eventitemimg" src="{{res.pic}}" />
-            <h2>{{res.descr}}</h2>
-            <h2>{{res.date}}</h2>
-
+            <h1 class="eventitemspan">{{res.title}}</h1>
+            <h3 class="eventitemspan">{{res.date}} {{res.time}}</h3>
+            <h3 class="eventitemspan">{{res.descr}} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint rerum vero facilis et a blanditiis quia iusto, quae debitis dolore, provident eaque fugiat architecto accusantium nemo itaque voluptatem eveniet cupiditate.</h3>
             {{> attends}}
             {{> comments}}
             {{> reviews}}
@@ -16,5 +14,4 @@
         {{/if}}
     </center>
 </body>
-
 </html>

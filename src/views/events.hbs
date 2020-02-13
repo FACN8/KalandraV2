@@ -1,13 +1,19 @@
 {{#if events}}
-{{#each events}} <a style="text-decoration: none;" href="/event/{{id}}"><center>
-<div class="eventitem"> 
-<img src="{{pic}}" alt="" class="eventitemimg">
-<center><h1 class="eventitemspan">{{title}}</h1></center>
-<h3 class="eventitemspan">{{descr}}</h3>
-<h3 class="eventitemspan">{{date}}</h3>
-</div></center></a>
-
+{{#each events}} <a style="text-decoration: none;" href="/event/{{id}}">
+    <center>
+        <div class="eventitem">
+            <img src="{{pic}}" alt="" class="eventitemimg">
+            <h1 class="eventitemspan">{{title}}</h1>
+            <h3 class="eventitemspan">{{date}} {{time}}</h3>
+            <h3 class="eventitemspan">{{descr}} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, illo
+                nisi velit, consequatur id eum ad praesentium vel optio dicta in maiores obcaecati voluptatibus totam
+                atque facere officiis impedit et!</h3>
+        </div>
+    </center>
+</a>
 {{/each}}
 {{else}}
-<center><h1 class="eventitemspan">No results found</h1></center>
+<center>
+    <h1 class="eventitemspan">No results found</h1>
+</center>
 {{/if}}

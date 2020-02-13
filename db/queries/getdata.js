@@ -14,15 +14,22 @@ module.exports.search = (term, cb) => {
 };
 
 module.exports.getEvent = (id, cb) => {
-    const query = 'SELECT * FROM events WHERE id=$1;';
+    const query = 'SELECT id,title,pic,date,time,descr FROM events WHERE id=$1;';
     dbConnection.query(query, [id], (err, result) => {
         if (err) return cb(err);
         cb(null, result.rows);
     });
 };
 
+module.exports.getPastEvents = (cb) =>
+    dbConnection.query('SELECT * FROM events WHERE date <= NOW() ORDER BY date DESC;',
+        (err, result) => {
+            if (err) return cb(err);
+            cb(null, result.rows);
+        });
+
 module.exports.getEvents = (cb) =>
-    dbConnection.query('SELECT * FROM events;',
+    dbConnection.query('SELECT * FROM events WHERE date >= NOW() ORDER BY date ASC;',
         (err, result) => {
             if (err) return cb(err);
             cb(null, result.rows);
