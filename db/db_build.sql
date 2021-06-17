@@ -53,7 +53,7 @@ INSERT INTO users (username, password, pic) VALUES
     ('fake', 'fake', 'https://pbs.twimg.com/media/B8IHvwdIgAApGQ4.png');
 
 INSERT INTO events (title,pic,date,time,descr) VALUES
-    ('Salesforce bullshit day','https://upload.wikimedia.org/wikipedia/en/thumb/8/83/Salesforce_logo.svg/1200px-Salesforce_logo.svg.png','2020-02-02', '16:00','A Hijje to go home early'),
+    ('Salesforce day','https://upload.wikimedia.org/wikipedia/en/thumb/8/83/Salesforce_logo.svg/1200px-Salesforce_logo.svg.png','02-02-2020','A good study day'),
     ('Oracle day','https://ir0.mobify.com/project-oss-www-fujitsu-com/c8/webp80/1536/https://www.fujitsu.com/il/Images/oracle-db580x224_tcm152-40873.jpg','2020-01-24', '13:00','A trip to petah tikva'),
     ('Valentines day','https://www.myjewishlearning.com/wp-content/uploads/2003/02/love2-1598x900.jpg','2020-02-14', '19:00','A Hijje to consume love'),
     ('Fatmeeh Birthday','https://cdn.mos.cms.futurecdn.net/vChK6pTy3vN3KbYZ7UU7k3-1200-80.jpg','2020-03-24', '15:30','The only real celebration');
